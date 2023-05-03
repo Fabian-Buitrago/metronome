@@ -1,4 +1,4 @@
-import Song from "../models/song";
+import Song from "../models/song.js";
 
 // Song list (in memory)
 const songs = [];
@@ -8,8 +8,8 @@ export const getSongList = (req, res) => {
 };
 
 export const addSong = (req, res) => {
-  const { title, artist, duration, bpm } = req.body;
-  const song = new Song(title, artist, duration, bpm);
+  const { title, artist, bpm } = req.body;
+  const song = new Song(title, artist, bpm);
   songs.push(song);
   res.redirect("/songs");
 };

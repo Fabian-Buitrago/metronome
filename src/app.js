@@ -1,6 +1,12 @@
 import express from "express";
 import morgan from "morgan";
-const morgan = require("morgan");
+import routes from "./routes/routes.js";
+
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -14,9 +20,7 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 // Rutas
-app.get("/", (req, res) => {
-  res.render("index");
-});
+app.use(routes);
 
 // Puerto de escucha
 const port = process.env.PORT || 3000;
